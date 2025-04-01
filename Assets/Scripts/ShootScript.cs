@@ -49,6 +49,9 @@ public class ShootScript : MonoBehaviour
                         // Normal balona vurulduğunda puan ekle
                         gameManager.AddScore(balloon.pointValue);
                     }
+                    
+                    // Balonu vur
+                    balloon.Shot();
                 }
 
                 Destroy(hit.transform.gameObject);
