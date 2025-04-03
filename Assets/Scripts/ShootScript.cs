@@ -7,28 +7,26 @@ public class ShootScript : MonoBehaviour
     public GameObject arCamera;
     public GameObject smoke;
     private GameManager gameManager;
+    private MathProblemGenerator mathProblemGenerator;
 
     void Start()
     {
-        // GameManager referansını al
         gameManager = GameManager.Instance;
+        mathProblemGenerator = FindObjectOfType<MathProblemGenerator>();
+        
         if (gameManager == null)
         {
-            Debug.LogError("GameManager bulunamadı! Lütfen sahnede bir GameManager olduğundan emin olun.");
+            Debug.LogError("GameManager bulunamadı!");
+        }
+        if (mathProblemGenerator == null)
+        {
+            Debug.LogError("MathProblemGenerator bulunamadı!");
         }
     }
 
     public void Shoot()
     {
-        if (gameManager == null)
-        {
-            gameManager = GameManager.Instance;
-            if (gameManager == null)
-            {
-                Debug.LogError("GameManager hala bulunamadı!");
-                return;
-            }
-        }
+        if (gameManager == null || mathProblemGenerator == null) return;
 
         RaycastHit hit;
         if(Physics.Raycast(arCamera.transform.position, arCamera.transform.forward, out hit))
@@ -39,22 +37,20 @@ public class ShootScript : MonoBehaviour
                 
                 if (balloon != null)
                 {
-                    if (balloon.isRedBalloon)
+                    if (balloon.IsCorrectAnswer(mathProblemGenerator.GetCorrectAnswer()))
                     {
-                        // Kırmızı balona vurulduğunda 50 puan düş
-                        gameManager.AddScore(-50);
+                        gameManager.AddScore(10); // Doğru cevap: +10 puan
+                        mathProblemGenerator.GenerateNewProblem();
+                        FindObjectOfType<BalloonAnswerManager>().AssignAnswersToBalloons();
                     }
                     else
                     {
-                        // Normal balona vurulduğunda puan ekle
-                        gameManager.AddScore(balloon.pointValue);
+                        gameManager.LoseLife(); // Yanlış cevap: -1 can
                     }
                     
-                    // Balonu vur
                     balloon.Shot();
                 }
 
-                Destroy(hit.transform.gameObject);
                 Instantiate(smoke, hit.point, Quaternion.LookRotation(hit.normal));
             }
         }

@@ -10,11 +10,14 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int lives = 3;
     public bool isGameOver = false;
+    private int highScore = 0;
 
     // UI referansları
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI livesText;
     public GameObject gameOverPanel;
+    public TextMeshProUGUI gameOverScoreText;
+    public TextMeshProUGUI highScoreText;
 
     private void Awake()
     {
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            LoadHighScore();
         }
         else
         {
@@ -29,13 +33,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        UpdateUI();
+    }
+
     public void AddScore(int points)
     {
         score += points;
-        if (score < 0)
-        {
-            GameOver();
-        }
+        if (score < 0) score = 0;
         UpdateUI();
     }
 
@@ -52,10 +58,20 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         isGameOver = true;
-        // Oyun sonu panelini göster
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+            if (gameOverScoreText != null)
+                gameOverScoreText.text = "Skor: " + score.ToString();
+            if (highScoreText != null)
+                highScoreText.text = "High Score: " + highScore.ToString();
         }
     }
 
@@ -70,6 +86,11 @@ public class GameManager : MonoBehaviour
         }
         UpdateUI();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void LoadHighScore()
+    {
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
     private void UpdateUI()
