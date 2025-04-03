@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BalloonScript : MonoBehaviour
 {
     public float lifetime = 7f;
     public int pointValue = 10; // Varsayılan değer sarı balon için
     public bool isRedBalloon = false;
+    public TextMeshProUGUI answerText;
     private bool wasShot = false; // Balonun vurulup vurulmadığını takip etmek için
 
     private void Start()
@@ -34,5 +36,14 @@ public class BalloonScript : MonoBehaviour
         {
             GameManager.Instance.LoseLife();
         }
+    }
+
+    public bool IsCorrectAnswer(int correctAnswer)
+    {
+        if (answerText != null)
+        {
+            return int.Parse(answerText.text) == correctAnswer;
+        }
+        return false;
     }
 }
