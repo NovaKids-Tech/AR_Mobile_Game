@@ -17,8 +17,21 @@ public class SpawnScript : MonoBehaviour
 
     IEnumerator StartSpawning()
     {
-        yield return new WaitForSeconds(4);
+        // İlk balon setini hemen oluştur
+        SpawnBalloonSet();
 
+        while (true)
+        {
+            // 7 saniye bekle
+            yield return new WaitForSeconds(7f);
+            
+            // Yeni balon seti oluştur
+            SpawnBalloonSet();
+        }
+    }
+
+    private void SpawnBalloonSet()
+    {
         for(int i = 0; i < 3; i++)
         {
             GameObject balloon = Instantiate(balloons[i], spawnPoints[i].position, Quaternion.identity);
@@ -30,7 +43,5 @@ public class SpawnScript : MonoBehaviour
                 balloonScript.isRedBalloon = isRedBalloons[i];
             }
         }
-
-        StartCoroutine(StartSpawning());
     }
 }
