@@ -41,10 +41,6 @@ public class ShootScript : MonoBehaviour
                     {
                         gameManager.AddScore(10); // Doğru cevap: +10 puan
                     }
-                    else
-                    {
-                        gameManager.LoseLife(); // Yanlış cevap: -1 can
-                    }
                     
                     balloon.Shot();
                 }

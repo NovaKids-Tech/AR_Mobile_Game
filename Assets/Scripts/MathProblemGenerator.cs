@@ -11,6 +11,7 @@ public class MathProblemGenerator : MonoBehaviour
     private int correctAnswer;
     private string operationSymbol;
     private OperationType currentOperation;
+    private bool hasProblemBeenGenerated = false;
 
     private enum OperationType
     {
@@ -20,13 +21,10 @@ public class MathProblemGenerator : MonoBehaviour
         Division
     }
 
-    void Start()
-    {
-        GenerateNewProblem();
-    }
-
     public void GenerateNewProblem()
     {
+        hasProblemBeenGenerated = true;
+        
         // Rastgele işlem türü seç
         currentOperation = (OperationType)Random.Range(0, 4);
 
@@ -89,6 +87,14 @@ public class MathProblemGenerator : MonoBehaviour
         if (problemText != null)
         {
             problemText.text = $"{firstNumber} {operationSymbol} {secondNumber} = ";
+        }
+    }
+
+    public void ShowBonusRoundMessage()
+    {
+        if (problemText != null)
+        {
+            problemText.text = "BONUS TUR! Tüm Balonları Patlat!";
         }
     }
 
