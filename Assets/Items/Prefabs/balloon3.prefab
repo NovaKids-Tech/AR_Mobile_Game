@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -13.848877, y: 0, z: 5.078125, w: -1.0803223}
+  m_margin: {x: -22.727436, y: 0, z: -3.3237336, w: -1.0803223}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -335,8 +335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 7
   moveSpeed: 0.4
-  isRedBalloon: 0
   answerText: {fileID: 5173814435389162729}
+  isBonusBalloon: 0
 --- !u!65 &7983376705496762033
 BoxCollider:
   m_ObjectHideFlags: 0

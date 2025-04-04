@@ -13,6 +13,7 @@ public class SpawnScript : MonoBehaviour
     private bool isSetHit = false;
     private float timer;
     private GameManager gameManager;
+    public bool isFirstSet = true; // İlk balon setini takip et
 
     void Start()
     {
@@ -43,14 +44,30 @@ public class SpawnScript : MonoBehaviour
             return;
         }
 
-        // İlk soruyu oluştur
-        mathProblemGenerator.GenerateNewProblem();
+        // İlk set için bonus tur mesajını göster
+        if (isFirstSet)
+        {
+            mathProblemGenerator.ShowBonusRoundMessage();
+        }
+        else
+        {
+            // İlk soruyu oluştur (eğer bonus tur değilse)
+            mathProblemGenerator.GenerateNewProblem();
+        }
         
-        // İlk balon setini oluştur
+        // İlk balon setini oluştur (bonus set)
         SpawnBalloonSet();
         
         // İlk balon setine cevapları ata
-        balloonAnswerManager.AssignAnswersToBalloons();
+        if (!isFirstSet)
+        {
+            balloonAnswerManager.AssignAnswersToBalloons();
+        }
+        else
+        {
+            // İlk set için balonlara "BONUS" yazı atayalım
+            AssignBonusTextToBalloons();
+        }
         
         timer = spawnInterval;
     }
@@ -61,7 +78,7 @@ public class SpawnScript : MonoBehaviour
 
         if (timer <= 0)
         {
-            if (!isSetHit)
+            if (!isSetHit && !isFirstSet)
             {
                 gameManager.LoseLife();
             }
@@ -73,6 +90,9 @@ public class SpawnScript : MonoBehaviour
 
     void CreateNewProblemAndBalloons()
     {
+        // İlk set değilse normal işlem yap
+        isFirstSet = false;
+        
         // Önce yeni bir matematik problemi oluştur
         mathProblemGenerator.GenerateNewProblem();
         
@@ -111,6 +131,16 @@ public class SpawnScript : MonoBehaviour
             if (newBalloon != null)
             {
                 newBalloon.tag = "Balloon";
+                // İlk sette tüm balonlara isBonusBalloon true ata
+                if (isFirstSet)
+                {
+                    BalloonScript balloonScript = newBalloon.GetComponent<BalloonScript>();
+                    if (balloonScript != null)
+                    {
+                        balloonScript.isBonusBalloon = true;
+                    }
+                }
+                
                 newBalloons[i] = newBalloon;
                 Debug.Log($"Balon {i} oluşturuldu: {spawnPosition}");
             }
@@ -124,13 +154,45 @@ public class SpawnScript : MonoBehaviour
         balloonAnswerManager.balloons = newBalloons;
     }
 
+    // Bonus balonlara "BONUS" yazısı ata
+    void AssignBonusTextToBalloons()
+    {
+        if (balloonAnswerManager.balloons == null || balloonAnswerManager.balloons.Length == 0)
+        {
+            return;
+        }
+        
+        foreach (GameObject balloon in balloonAnswerManager.balloons)
+        {
+            if (balloon != null)
+            {
+                BalloonScript balloonScript = balloon.GetComponent<BalloonScript>();
+                if (balloonScript != null && balloonScript.answerText != null)
+                {
+                    balloonScript.answerText.text = "BONUS";
+                }
+            }
+        }
+        
+        Debug.Log("Bonus balonlar oluşturuldu! Her biri 10 puan!");
+    }
+
     public void OnBalloonHit(bool isCorrect)
     {
         isSetHit = true;
-        if (!isCorrect)
+        
+        if (isFirstSet)
         {
+            // İlk sette tüm balonlar bonus, can kaybetme ve 10 puan ver
+            gameManager.AddScore(10);
+            Debug.Log("Bonus balon patlatıldı! +10 puan!");
+        }
+        else if (!isCorrect)
+        {
+            // Normal setlerde yanlış cevap can kaybettirir
             gameManager.LoseLife();
         }
+        
         // Balon vurulduğunda yeni soru oluşturma, sadece timer'ı sıfırla
         timer = spawnInterval;
     }

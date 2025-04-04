@@ -363,16 +363,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b3b6a662dde84388320a3f24a6413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 1599243125}
-  - {fileID: 213887719}
-  - {fileID: 736777372}
-  balloons:
-  - {fileID: 2920663213267605672, guid: bdf6eeb1b216c410c8f80921076cfe27, type: 3}
+  balloonPrefabs:
   - {fileID: 670334975291859133, guid: cb584ef685d16436d9e0e318f8ef950e, type: 3}
   - {fileID: 7848843361691722939, guid: 9a294644b277347a081ed92a8408399e, type: 3}
-  pointValues: 0a0000001400000000000000
-  isRedBalloons: 000001
+  - {fileID: 2920663213267605672, guid: bdf6eeb1b216c410c8f80921076cfe27, type: 3}
+  spawnInterval: 7
+  spawnHeight: -2
+  spawnWidth: 4
+  balloonsPerSet: 3
+  isFirstSet: 1
 --- !u!4 &205428661
 Transform:
   m_ObjectHideFlags: 0

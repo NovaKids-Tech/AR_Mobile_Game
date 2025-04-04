@@ -6,9 +6,9 @@ using TMPro;
 public class BalloonScript : MonoBehaviour
 {
     public float lifetime = 7f;
-    public float moveSpeed = 0.1f; // Daha yavaş hareket
-    public bool isRedBalloon = false;
+    public float moveSpeed = 1f; // Daha yavaş hareket
     public TextMeshProUGUI answerText;
+    public bool isBonusBalloon = false; // Bonus balon mu?
     private SpawnScript spawnScript;
 
     void Start()
@@ -38,7 +38,7 @@ public class BalloonScript : MonoBehaviour
     {
         if (spawnScript != null)
         {
-            bool isCorrect = IsCorrectAnswer();
+            bool isCorrect = isBonusBalloon || IsCorrectAnswer();
             spawnScript.OnBalloonHit(isCorrect);
         }
         Destroy(gameObject);
@@ -46,6 +46,9 @@ public class BalloonScript : MonoBehaviour
 
     public bool IsCorrectAnswer()
     {
+        // Bonus balonlar her zaman doğru sayılır
+        if (isBonusBalloon) return true;
+
         if (answerText == null) return false;
 
         MathProblemGenerator mathProblemGenerator = FindObjectOfType<MathProblemGenerator>();
