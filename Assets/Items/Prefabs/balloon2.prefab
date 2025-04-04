@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: -780110464568826023}
   m_Layer: 0
   m_Name: balloon2
-  m_TagString: Untagged
+  m_TagString: Balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,8 +448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 7
-  pointValue: 0
-  isRedBalloon: 1
+  moveSpeed: 0.4
+  isRedBalloon: 0
   answerText: {fileID: 5093265421715066322}
 --- !u!65 &-780110464568826023
 BoxCollider:

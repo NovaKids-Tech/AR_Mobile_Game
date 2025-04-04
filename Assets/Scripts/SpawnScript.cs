@@ -1,47 +1,137 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SpawnScript : MonoBehaviour
 {
-    public Transform[] spawnPoints;
-    public GameObject[] balloons;
-    public int[] pointValues = { 10, 20, 0 }; // Sarı: 10, Mavi: 20, Kırmızı: 0
-    public bool[] isRedBalloons = { false, false, true }; // Kırmızı balon kontrolü
+    public GameObject[] balloonPrefabs; // Farklı balon prefabları
+    public float spawnInterval = 7f;
+    public float spawnHeight = -2f;
+    public float spawnWidth = 4f;
+    public int balloonsPerSet = 3;
 
-    // Start is called before the first frame update
+    private BalloonAnswerManager balloonAnswerManager;
+    private MathProblemGenerator mathProblemGenerator;
+    private bool isSetHit = false;
+    private float timer;
+    private GameManager gameManager;
+
     void Start()
     {
-        StartCoroutine(StartSpawning());
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager bulunamadı!");
+            return;
+        }
+
+        mathProblemGenerator = FindObjectOfType<MathProblemGenerator>();
+        if (mathProblemGenerator == null)
+        {
+            Debug.LogError("MathProblemGenerator bulunamadı!");
+            return;
+        }
+
+        balloonAnswerManager = FindObjectOfType<BalloonAnswerManager>();
+        if (balloonAnswerManager == null)
+        {
+            Debug.LogError("BalloonAnswerManager bulunamadı!");
+            return;
+        }
+
+        if (balloonPrefabs == null || balloonPrefabs.Length == 0)
+        {
+            Debug.LogError("Balloon prefabs atanmamış!");
+            return;
+        }
+
+        // İlk soruyu oluştur
+        mathProblemGenerator.GenerateNewProblem();
+        
+        // İlk balon setini oluştur
+        SpawnBalloonSet();
+        
+        // İlk balon setine cevapları ata
+        balloonAnswerManager.AssignAnswersToBalloons();
+        
+        timer = spawnInterval;
     }
 
-    IEnumerator StartSpawning()
+    void Update()
     {
-        // İlk balon setini hemen oluştur
-        SpawnBalloonSet();
+        timer -= Time.deltaTime;
 
-        while (true)
+        if (timer <= 0)
         {
-            // 7 saniye bekle
-            yield return new WaitForSeconds(7f);
-            
-            // Yeni balon seti oluştur
-            SpawnBalloonSet();
+            if (!isSetHit)
+            {
+                gameManager.LoseLife();
+            }
+            CreateNewProblemAndBalloons();
+            timer = spawnInterval;
+            isSetHit = false;
         }
     }
 
-    private void SpawnBalloonSet()
+    void CreateNewProblemAndBalloons()
     {
-        for(int i = 0; i < 3; i++)
+        // Önce yeni bir matematik problemi oluştur
+        mathProblemGenerator.GenerateNewProblem();
+        
+        // Sonra balonları oluştur
+        SpawnBalloonSet();
+        
+        // Son olarak balondaki cevapları güncelle
+        balloonAnswerManager.AssignAnswersToBalloons();
+    }
+
+    void SpawnBalloonSet()
+    {
+        // Önceki balonları temizle
+        GameObject[] oldBalloons = GameObject.FindGameObjectsWithTag("Balloon");
+        foreach (GameObject balloon in oldBalloons)
         {
-            GameObject balloon = Instantiate(balloons[i], spawnPoints[i].position, Quaternion.identity);
-            BalloonScript balloonScript = balloon.GetComponent<BalloonScript>();
-            
-            if (balloonScript != null)
+            if (balloon != null)
             {
-                balloonScript.pointValue = pointValues[i];
-                balloonScript.isRedBalloon = isRedBalloons[i];
+                Destroy(balloon);
             }
         }
+
+        // Yeni balonları oluştur
+        GameObject[] newBalloons = new GameObject[balloonsPerSet];
+        float spacing = spawnWidth / (balloonsPerSet - 1);
+
+        for (int i = 0; i < balloonsPerSet; i++)
+        {
+            // Rastgele bir balon prefabı seç
+            int randomPrefabIndex = Random.Range(0, balloonPrefabs.Length);
+            GameObject balloonToSpawn = balloonPrefabs[randomPrefabIndex];
+            
+            float xPos = -spawnWidth/2 + (spacing * i);
+            Vector3 spawnPosition = new Vector3(xPos, spawnHeight, 2f);
+            GameObject newBalloon = Instantiate(balloonToSpawn, spawnPosition, Quaternion.identity);
+            if (newBalloon != null)
+            {
+                newBalloon.tag = "Balloon";
+                newBalloons[i] = newBalloon;
+                Debug.Log($"Balon {i} oluşturuldu: {spawnPosition}");
+            }
+            else
+            {
+                Debug.LogError($"Balon {i} oluşturulamadı!");
+            }
+        }
+
+        // BalloonAnswerManager'a yeni balonları ata
+        balloonAnswerManager.balloons = newBalloons;
+    }
+
+    public void OnBalloonHit(bool isCorrect)
+    {
+        isSetHit = true;
+        if (!isCorrect)
+        {
+            gameManager.LoseLife();
+        }
+        // Balon vurulduğunda yeni soru oluşturma, sadece timer'ı sıfırla
+        timer = spawnInterval;
     }
 }
