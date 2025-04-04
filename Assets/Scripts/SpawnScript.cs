@@ -5,7 +5,7 @@ public class SpawnScript : MonoBehaviour
     public GameObject[] balloonPrefabs; // Farklı balon prefabları
     public float spawnInterval = 7f;
     public float spawnHeight = -2f;
-    public float spawnWidth = 4f;
+    public float spawnWidth = 2f;
     public int balloonsPerSet = 3;
 
     private BalloonAnswerManager balloonAnswerManager;
