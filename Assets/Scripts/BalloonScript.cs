@@ -6,43 +6,55 @@ using TMPro;
 public class BalloonScript : MonoBehaviour
 {
     public float lifetime = 7f;
-    public int pointValue = 10; // Varsayılan değer sarı balon için
+    public float moveSpeed = 0.1f; // Daha yavaş hareket
     public bool isRedBalloon = false;
     public TextMeshProUGUI answerText;
-    private bool wasShot = false; // Balonun vurulup vurulmadığını takip etmek için
+    private SpawnScript spawnScript;
 
-    private void Start()
+    void Start()
     {
+        spawnScript = FindObjectOfType<SpawnScript>();
+        if (spawnScript == null)
+        {
+            Debug.LogError("SpawnScript bulunamadı!");
+        }
         // Balonun yaşam süresini ayarla
         Destroy(gameObject, lifetime);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.up * Time.deltaTime * 0.2f);
+        // Balonu yukarı doğru hareket ettir
+        transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+
+        // Balonun ekrandan çıkıp çıkmadığını kontrol et
+        if (transform.position.y > 5f) // Daha alçak bir üst sınır
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Shot()
     {
-        wasShot = true;
+        if (spawnScript != null)
+        {
+            bool isCorrect = IsCorrectAnswer();
+            spawnScript.OnBalloonHit(isCorrect);
+        }
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
+    public bool IsCorrectAnswer()
     {
-        // Eğer balon vurulmadan yok olduysa (yaşam süresi dolduysa)
-        if (!wasShot && !isRedBalloon)
-        {
-            GameManager.Instance.LoseLife();
-        }
-    }
+        if (answerText == null) return false;
 
-    public bool IsCorrectAnswer(int correctAnswer)
-    {
-        if (answerText != null)
+        MathProblemGenerator mathProblemGenerator = FindObjectOfType<MathProblemGenerator>();
+        if (mathProblemGenerator == null) return false;
+
+        int balloonAnswer;
+        if (int.TryParse(answerText.text, out balloonAnswer))
         {
-            return int.Parse(answerText.text) == correctAnswer;
+            return balloonAnswer == mathProblemGenerator.GetCorrectAnswer();
         }
         return false;
     }

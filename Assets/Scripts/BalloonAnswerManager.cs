@@ -9,15 +9,24 @@ public class BalloonAnswerManager : MonoBehaviour
 
     void Start()
     {
-        SetupBalloonTexts();
-        AssignAnswersToBalloons();
+        if (mathProblemGenerator == null)
+        {
+            Debug.LogError("BalloonAnswerManager: MathProblemGenerator referansı eksik!");
+            return;
+        }
     }
 
     void SetupBalloonTexts()
     {
-        if (balloons == null || balloons.Length != 3)
+        if (balloons == null)
         {
-            Debug.LogError("BalloonAnswerManager: Balon referansları eksik!");
+            Debug.LogError("BalloonAnswerManager: balloons dizisi null!");
+            return;
+        }
+
+        if (balloons.Length != 3)
+        {
+            Debug.LogError("BalloonAnswerManager: Balon sayısı 3 olmalı!");
             return;
         }
 
@@ -25,24 +34,59 @@ public class BalloonAnswerManager : MonoBehaviour
         
         for (int i = 0; i < balloons.Length; i++)
         {
+            if (balloons[i] == null)
+            {
+                Debug.LogError($"BalloonAnswerManager: {i}. balon null!");
+                continue;
+            }
+
             BalloonScript balloonScript = balloons[i].GetComponent<BalloonScript>();
-            if (balloonScript != null && balloonScript.answerText != null)
+            if (balloonScript == null)
             {
-                balloonTexts[i] = balloonScript.answerText;
+                Debug.LogError($"BalloonAnswerManager: {i}. balonda BalloonScript yok!");
+                continue;
             }
-            else
+
+            if (balloonScript.answerText == null)
             {
-                Debug.LogError($"BalloonAnswerManager: Balon {i} için text referansı bulunamadı!");
+                Debug.LogError($"BalloonAnswerManager: {i}. balonda answerText null!");
+                continue;
             }
+
+            balloonTexts[i] = balloonScript.answerText;
         }
     }
 
     public void AssignAnswersToBalloons()
     {
-        if (mathProblemGenerator == null || balloons.Length != 3 || balloonTexts == null || balloonTexts.Length != 3)
+        SetupBalloonTexts();
+
+        if (mathProblemGenerator == null)
         {
-            Debug.LogError("BalloonAnswerManager: Gerekli referanslar eksik!");
+            Debug.LogError("BalloonAnswerManager: MathProblemGenerator null!");
             return;
+        }
+
+        if (balloonTexts == null)
+        {
+            Debug.LogError("BalloonAnswerManager: balloonTexts dizisi null!");
+            return;
+        }
+
+        if (balloonTexts.Length != 3)
+        {
+            Debug.LogError("BalloonAnswerManager: Balon sayısı 3 olmalı!");
+            return;
+        }
+
+        // Tüm balonların text bileşenlerinin olduğundan emin ol
+        for (int i = 0; i < balloonTexts.Length; i++)
+        {
+            if (balloonTexts[i] == null)
+            {
+                Debug.LogError($"BalloonAnswerManager: {i}. balonun text bileşeni null!");
+                return;
+            }
         }
 
         int correctAnswer = mathProblemGenerator.GetCorrectAnswer();
@@ -67,5 +111,7 @@ public class BalloonAnswerManager : MonoBehaviour
                 balloonTexts[i].text = wrongAnswer.ToString();
             }
         }
+
+        Debug.Log($"Cevaplar atandı. Doğru cevap ({correctAnswer}) {correctBalloonIndex}. balonda.");
     }
 } 

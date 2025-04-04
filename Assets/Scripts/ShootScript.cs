@@ -37,11 +37,9 @@ public class ShootScript : MonoBehaviour
                 
                 if (balloon != null)
                 {
-                    if (balloon.IsCorrectAnswer(mathProblemGenerator.GetCorrectAnswer()))
+                    if (balloon.IsCorrectAnswer())
                     {
                         gameManager.AddScore(10); // Doğru cevap: +10 puan
-                        mathProblemGenerator.GenerateNewProblem();
-                        FindObjectOfType<BalloonAnswerManager>().AssignAnswersToBalloons();
                     }
                     else
                     {
