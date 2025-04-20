@@ -3,14 +3,14 @@
 <h1>🎈 AR Balon Patlatma Oyunu</h1>
 <p>Bu proje, Unity ile geliştirilmiş, AR (Artırılmış Gerçeklik) teknolojisini kullanan eğitici bir matematik oyunudur. Oyuncular, gerçek dünya üzerinde beliren balonları patlatarak matematik becerilerini geliştirebilirler.</p>
 
-<p><a href="https://www.youtube.com/watch?v=JQCE79prn0k">🎬 Oyun Tanıtım Videosu</a></p>
-<p><a href="https://drive.google.com/file/d/1pAwp147_oUpoS17l3FdGiRdmYSkaE8ub/view?usp=sharing">📥 Uygulama APK Linki</a></p>
+<p><a href="https://www.youtube.com/watch?v=JQCE79prn0k" target="_blank">🎬 Oyun Tanıtım Videosu</a></p>
+<p><a href="https://drive.google.com/file/d/1pAwp147_oUpoS17l3FdGiRdmYSkaE8ub/view?usp=sharing" target="_blank">📥 Uygulama APK Linki</a></p>
 
 <h2>🗂️ Proje Yönetimi</h2>
-<p><a href="https://trello.com/b/AaLVJ1e0/proje-ekipi">Trello Board</a></p>
+<p><a href="https://trello.com/b/AaLVJ1e0/proje-ekipi" target="_blank">Trello Board</a></p>
 
 <h2>🌐 Web Site</h2>
-<p><a href="https://novakids-tech.github.io/novakids_techOfficewebsite/#home">Web Site</a></p>
+<p><a href="https://novakids-tech.github.io/novakids_techOfficewebsite/#home" target="_blank">Web Site</a></p>
 
 <h2 class="text-2xl font-bold mb-4">👨‍💻 Ekibimiz</h2>
 <ul class="list-disc list-inside text-lg">
