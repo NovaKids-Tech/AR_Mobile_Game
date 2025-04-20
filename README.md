@@ -20,18 +20,18 @@
   <li><strong>Ömer Faruk Karaoğlan</strong> — 200541045</li>
 </ul>
 
-<hr>
-### Dokümanlar / Documents
-- [Aktivite Diyagramı](Documentation/AR_Balon_Patlatma_Activity_Diagram (1).png)
-- [Teknoloji Hazırlık Seviyesi (THS) 7 Belgesi](public/documents/lessons_1_20241113210805.xlsx)
-- [Gantt Şeması](Documentation/AR_Balon_Patlatma_Gantt (1).png)
-- [Deployment Diyagramı](Documentation/Deployment-Diyagramı.jpg)
-- [Package Diyagramı](Documentation/Package Diyagramı.png)
-- [UseCase Diyagramı](Documentation/balloonusediyagram.vsdx)
-- [Smart Analizi](Documentation/smart.pdf)
-- [Swot Analizi](Documentation/swot_analizi.png)
-- [UML Diyagramı](Documentation/umlDiyagram.png)
-<hr>
+<h2>📄 Dokümanlar / Documents</h2>
+<ul>
+  <li> <a href="Documentation/AR_Balon_Patlatma_Activity_Diagram%20(1).png" target="_blank">Aktivite Diyagramı</a></li>
+  <li> <a href="public/documents/lessons_1_20241113210805.xlsx" target="_blank">Teknoloji Hazırlık Seviyesi (THS) 7 Belgesi</a></li>
+  <li> <a href="Documentation/AR_Balon_Patlatma_Gantt%20(1).png" target="_blank">Gantt Şeması</a></li>
+  <li> <a href="Documentation/Deployment-Diyagramı.jpg" target="_blank">Deployment Diyagramı</a></li>
+  <li> <a href="Documentation/Package%20Diyagramı.png" target="_blank">Package Diyagramı</a></li>
+  <li> <a href="Documentation/balloonusediyagram.png" target="_blank">UseCase Diyagramı</a></li>
+  <li> <a href="Documentation/smart.pdf" target="_blank">SMART Analizi</a></li>
+  <li> <a href="Documentation/swot_analizi.png" target="_blank">SWOT Analizi</a></li>
+  <li> <a href="Documentation/umlDiyagram.png" target="_blank">UML Diyagramı</a></li>
+</ul>
 
 ## Oyun Görseli
 
