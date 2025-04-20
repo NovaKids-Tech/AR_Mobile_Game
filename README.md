@@ -23,7 +23,7 @@
 <h2>📄 Dokümanlar / Documents</h2>
 <ul>
   <li> <a href="Documentation/AR_Balon_Patlatma_Activity_Diagram%20(1).png" target="_blank">Aktivite Diyagramı</a></li>
-  <li> <a href="public/documents/lessons_1_20241113210805.xlsx" target="_blank">Teknoloji Hazırlık Seviyesi (THS) 7 Belgesi</a></li>
+   <li> <a href="Documentation/sequence-diagram.png" target="_blank">Sequence Diyagramı</a></li>
   <li> <a href="Documentation/AR_Balon_Patlatma_Gantt%20(1).png" target="_blank">Gantt Şeması</a></li>
   <li> <a href="Documentation/Deployment-Diyagramı.jpg" target="_blank">Deployment Diyagramı</a></li>
   <li> <a href="Documentation/Package%20Diyagramı.png" target="_blank">Package Diyagramı</a></li>
