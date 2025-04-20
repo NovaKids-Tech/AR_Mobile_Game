@@ -21,9 +21,19 @@
 </ul>
 
 <hr>
+### Dokümanlar / Documents
+- [Aktivite Diyagramı](Documentation/AR_Balon_Patlatma_Activity_Diagram (1).png)
+- [Teknoloji Hazırlık Seviyesi (THS) 7 Belgesi](public/documents/lessons_1_20241113210805.xlsx)
+- [Gantt Şeması](Documentation/AR_Balon_Patlatma_Gantt (1).png)
+- [Deployment Diyagramı](Documentation/Deployment-Diyagramı.jpg)
+- [Package Diyagramı](Documentation/Package Diyagramı.png)
+- [UseCase Diyagramı](Documentation/balloonusediyagram.vsdx)
+- [Smart Analizi](Documentation/smart.pdf)
+- [Swot Analizi](Documentation/swot_analizi.png)
+- [UML Diyagramı](Documentation/umlDiyagram.png)
+<hr>
 
-
-## 🖼️ Oyun Görseli
+## Oyun Görseli
 
 ![AR Balon Patlatma Oyunu](./images/oyun-ornek-foto.jpeg)
 
@@ -64,20 +74,20 @@
 
 <hr>
 
-<h1>🚀 Kurulum ve Çalıştırma Rehberi</h1>
+<h1> Kurulum ve Çalıştırma Rehberi</h1>
 <p>Bu rehberde, <strong>AR Mobil Balon Oyunu</strong> projesini nasıl indirip çalıştıracağınızı adım adım ve sade bir şekilde anlatıyoruz.</p>
 
-<h2>💾 1️⃣ Projeyi Bilgisayarınıza İndirin</h2>
+<h2>1️⃣ Projeyi Bilgisayarınıza İndirin</h2>
 <p>Terminal veya komut satırını açın ve:</p>
 <pre><code>git clone https://github.com/NovaKids-Tech/AR_Mobile_Game.git</code></pre>
 
-<h2>📂 2️⃣ Proje Klasörüne Girin</h2>
+<h2>2️⃣ Proje Klasörüne Girin</h2>
 <pre><code>cd AR_Mobile_Game</code></pre>
 
-<h2>🧑‍💻 3️⃣ Unity Hub ile Projeyi Açın</h2>
+<h2>3️⃣ Unity Hub ile Projeyi Açın</h2>
 <p>Unity Hub'ı açın ve <code>Add</code> butonuna tıklayıp proje klasörünü seçin.</p>
 
-<h2>🛠️ 4️⃣ Gerekli AR Paketlerini Yükleyin</h2>
+<h2>4️⃣ Gerekli AR Paketlerini Yükleyin</h2>
 <ol>
   <li><code>Window > Package Manager</code> seçeneğini açın.</li>
   <li><code>Unity Registry</code> kısmını seçin.</li>
@@ -90,7 +100,7 @@
   </li>
 </ol>
 
-<h2>📱 5️⃣ Android veya iOS Cihaza Derleyin</h2>
+<h2>5️⃣ Android veya iOS Cihaza Derleyin</h2>
 <ol>
   <li><code>File > Build Settings</code> menüsüne gidin.</li>
   <li><code>Android</code> veya <code>iOS</code> seçin ve <code>Switch Platform</code> tıklayın.</li>
@@ -98,7 +108,7 @@
   <li><code>Build And Run</code> ile cihaza yükleyin.</li>
 </ol>
 
-<h2>📋 6️⃣ Cihazınızın AR Desteğini Kontrol Edin</h2>
+<h2>6️⃣ Cihazınızın AR Desteğini Kontrol Edin</h2>
 <ul>
   <li>Android: ARCore destekli olmalı.</li>
   <li>iOS: ARKit destekli olmalı.</li>
@@ -118,7 +128,7 @@
   <li><code>moveSpeed</code>: Balonların yukarı hareket hızı</li>
 </ul>
 
-<h2>🧠 Geliştirme Notları</h2>
+<h2>Geliştirme Notları</h2>
 <ul>
   <li>AR Foundation kullanıldı.</li>
   <li>TextMeshPro ile metinler hazırlandı.</li>
@@ -126,7 +136,7 @@
   <li>Skorlar ve can bilgileri <code>PlayerPrefs</code> ile kaydedilir.</li>
 </ul>
 
-<h2>🔮 Gelecek Geliştirmeler</h2>
+<h2>Gelecek Geliştirmeler</h2>
 <ul>
   <li>Farklı zorluk seviyeleri</li>
   <li>Çeşitli matematik işlemlerinin seçimi</li>
