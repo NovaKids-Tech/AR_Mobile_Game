@@ -3,7 +3,7 @@
 <h1>🎈 AR Balon Patlatma Oyunu</h1>
 <p>Bu proje, Unity ile geliştirilmiş, AR (Artırılmış Gerçeklik) teknolojisini kullanan eğitici bir matematik oyunudur. Oyuncular, gerçek dünya üzerinde beliren balonları patlatarak matematik becerilerini geliştirebilirler.</p>
 
-<p><a href="https://youtube.com/shorts/uEApAAXREZU?feature=share">🎬 Oyun Tanıtım Videosu</a></p>
+<p><a href="https://www.youtube.com/watch?v=JQCE79prn0k">🎬 Oyun Tanıtım Videosu</a></p>
 <p><a href="https://drive.google.com/file/d/1pAwp147_oUpoS17l3FdGiRdmYSkaE8ub/view?usp=sharing">📥 Uygulama APK Linki</a></p>
 
 <h2>🗂️ Proje Yönetimi</h2>
@@ -11,6 +11,25 @@
 
 <h2>🌐 Web Site</h2>
 <p><a href="https://novakids-tech.github.io/novakids_techOfficewebsite/#home">Web Site</a></p>
+
+<h2 class="text-2xl font-bold mb-4">👨‍💻 Ekibimiz</h2>
+<ul class="list-disc list-inside text-lg">
+  <li><strong>Abdulkadir Erbaş</strong> — 200541017</li>
+  <li><strong>İbrahim Halil Demir</strong> — 210541017</li>
+  <li><strong>Hasan Hüseyin Kılıç</strong> — 220541109</li>
+  <li><strong>Ömer Faruk Karaoğlan</strong> — 200541045</li>
+</ul>
+
+<hr>
+
+
+## 🖼️ Oyun Görseli
+
+![AR Balon Patlatma Oyunu](./images/oyun-ornek-foto.jpeg)
+
+> Geliştirdiğimiz AR Balon Patlatma Oyunu'na ait örnek bir ekran görüntüsü.
+
+
 
 <h2>🕹️ Oynanış</h2>
 <ol>
