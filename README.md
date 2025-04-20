@@ -1,82 +1,126 @@
-# AR Balon Patlatma Oyunu
+<body>
 
-Bu proje, Unity ile geliştirilmiş, AR (Artırılmış Gerçeklik) teknolojisini kullanan eğitici bir matematik oyunudur. Oyuncular, gerçek dünya üzerinde beliren balonları patlatarak matematik becerilerini geliştirebilirler.
+<h1>🎈 AR Balon Patlatma Oyunu</h1>
+<p>Bu proje, Unity ile geliştirilmiş, AR (Artırılmış Gerçeklik) teknolojisini kullanan eğitici bir matematik oyunudur. Oyuncular, gerçek dünya üzerinde beliren balonları patlatarak matematik becerilerini geliştirebilirler.</p>
 
-## Oynanış
+<p><a href="https://youtube.com/shorts/uEApAAXREZU?feature=share">🎬 Oyun Tanıtım Videosu</a></p>
+<p><a href="https://drive.google.com/file/d/1pAwp147_oUpoS17l3FdGiRdmYSkaE8ub/view?usp=sharing">📥 Uygulama APK Linki</a></p>
 
-1. Oyun başladığında bir bonus turla karşılaşırsınız. Bu turda tüm balonları patlatarak puanınızı artırabilirsiniz.
-2. Bonus turdan sonra, ekranda matematik soruları görünmeye başlar (örn. "5 + 3 = ?").
-3. Sorunun cevabını içeren balonu bulup patlatmanız gerekir.
-4. Doğru balonu patlatırsanız 10 puan kazanırsınız.
-5. Yanlış balonu patlatırsanız 1 can kaybedersiniz.
-6. Balonlar belirli bir süre içinde patlatılmazsa 1 can kaybedersiniz.
-7. Canınız sıfıra düştüğünde oyun sona erer.
+<h2>🗂️ Proje Yönetimi</h2>
+<p><a href="https://trello.com/b/AaLVJ1e0/proje-ekipi">Trello Board</a></p>
 
-## Sistem Özellikleri
+<h2>🌐 Web Site</h2>
+<p><a href="https://novakids-tech.github.io/novakids_techOfficewebsite/#home">Web Site</a></p>
 
-- Rastgele matematik soruları üretme (toplama, çıkarma, çarpma, bölme)
-- AR kamera ile gerçek dünyada balonları görme ve vurma
-- Farklı renklerde balonlar
-- Puan sistemi ve can mekanizması
-- Bonus tur sistemi
-- Yüksek skor takibi
+<h2>🕹️ Oynanış</h2>
+<ol>
+  <li>Oyun başladığında bir bonus turla karşılaşırsınız. Bu turda tüm balonları patlatarak puanınızı artırabilirsiniz.</li>
+  <li>Bonus turdan sonra ekranda matematik soruları görünmeye başlar (örn: "5 + 3 = ?").</li>
+  <li>Sorunun cevabını içeren balonu bulup patlatmanız gerekir.</li>
+  <li>Doğru balonu patlatırsanız 10 puan kazanırsınız.</li>
+  <li>Yanlış balonu patlatırsanız 1 can kaybedersiniz.</li>
+  <li>Balonlar zamanında patlatılmazsa 1 can kaybedersiniz.</li>
+  <li>Canınız sıfıra düştüğünde oyun sona erer.</li>
+</ol>
 
-## Proje Yapısı
+<h2>⚙️ Sistem Özellikleri</h2>
+<ul>
+  <li>Rastgele matematik soruları üretme (toplama, çıkarma, çarpma, bölme)</li>
+  <li>AR kamera ile gerçek dünyada balonları görme ve vurma</li>
+  <li>Farklı renklerde balonlar</li>
+  <li>Puan sistemi ve can mekanizması</li>
+  <li>Bonus tur sistemi</li>
+  <li>Yüksek skor takibi</li>
+</ul>
 
-Bu projede aşağıdaki temel script'ler bulunmaktadır:
+<h2>📁 Proje Yapısı</h2>
+<ul>
+  <li><strong>GameManager.cs:</strong> Oyun durumunu (skor, can, oyun sonu) yönetir. UI günceller ve yüksek skoru kaydeder.</li>
+  <li><strong>MathProblemGenerator.cs:</strong> Rastgele matematik soruları üretir. Toplama, çıkarma, çarpma, bölme desteği vardır.</li>
+  <li><strong>SpawnScript.cs:</strong> Balonları aralıklı olarak oluşturur, bonus turunu yönetir.</li>
+  <li><strong>BalloonScript.cs:</strong> Balonun hareketini, patlatıldığında olacak olayları ve cevap kontrolünü yönetir.</li>
+  <li><strong>BalloonAnswerManager.cs:</strong> Doğru cevabı balonlara rastgele dağıtır.</li>
+  <li><strong>ShootScript.cs:</strong> Oyuncunun tıklama/dokunma hareketlerini algılar, AR ışını göndererek balonu tespit eder.</li>
+</ul>
 
-### `GameManager.cs`
-Oyunun temel durumunu (skor, can, oyun sonu) yöneten ana script. UI güncellemelerini ve yüksek skor takibini de gerçekleştirir.
+<hr>
 
-### `MathProblemGenerator.cs`
-Rastgele matematik soruları üreten ve ekranda gösteren script. Dört işlem (toplama, çıkarma, çarpma, bölme) desteklenmektedir.
+<h1>🚀 Kurulum ve Çalıştırma Rehberi</h1>
+<p>Bu rehberde, <strong>AR Mobil Balon Oyunu</strong> projesini nasıl indirip çalıştıracağınızı adım adım ve sade bir şekilde anlatıyoruz.</p>
 
-### `SpawnScript.cs`
-Balonları belirli aralıklarla ekranda oluşturan script. Bonus tur yönetimi ve balon setlerinin oluşturulmasından sorumludur.
+<h2>💾 1️⃣ Projeyi Bilgisayarınıza İndirin</h2>
+<p>Terminal veya komut satırını açın ve:</p>
+<pre><code>git clone https://github.com/NovaKids-Tech/AR_Mobile_Game.git</code></pre>
 
-### `BalloonScript.cs`
-Her bir balonun davranışını kontrol eden script. Balonun yukarı doğru hareketi, patlatıldığında gerçekleşecek olaylar ve cevap kontrolü gibi işlevleri içerir.
+<h2>📂 2️⃣ Proje Klasörüne Girin</h2>
+<pre><code>cd AR_Mobile_Game</code></pre>
 
-### `BalloonAnswerManager.cs`
-Balonlarda gösterilen cevapları yöneten script. Doğru cevabı rastgele bir balona atarken, diğer balonlara yanlış cevaplar atanmasını sağlar.
+<h2>🧑‍💻 3️⃣ Unity Hub ile Projeyi Açın</h2>
+<p>Unity Hub'ı açın ve <code>Add</code> butonuna tıklayıp proje klasörünü seçin.</p>
 
-### `ShootScript.cs`
-Oyuncunun dokunma/tıklama işlemlerini algılayıp balonları vurmayı sağlayan script. AR kamera üzerinden ışın gönderip balonları tespit eder.
+<h2>🛠️ 4️⃣ Gerekli AR Paketlerini Yükleyin</h2>
+<ol>
+  <li><code>Window > Package Manager</code> seçeneğini açın.</li>
+  <li><code>Unity Registry</code> kısmını seçin.</li>
+  <li>Şu paketleri yükleyin:
+    <ul>
+      <li>AR Foundation</li>
+      <li>Android: ARCore XR Plugin</li>
+      <li>iOS: ARKit XR Plugin</li>
+    </ul>
+  </li>
+</ol>
 
-## Kurulum
+<h2>📱 5️⃣ Android veya iOS Cihaza Derleyin</h2>
+<ol>
+  <li><code>File > Build Settings</code> menüsüne gidin.</li>
+  <li><code>Android</code> veya <code>iOS</code> seçin ve <code>Switch Platform</code> tıklayın.</li>
+  <li>Cihazınızı USB ile bağlayın.</li>
+  <li><code>Build And Run</code> ile cihaza yükleyin.</li>
+</ol>
 
-1. Projeyi bilgisayarınıza indirin.
-2. Unity Hub üzerinden projeyi açın (Unity 2020.3 veya daha yeni bir sürüm önerilir).
-3. AR Foundation ve AR Core/AR Kit paketlerinin kurulu olduğundan emin olun.
-4. Projeyi bir Android veya iOS cihaza derleyin.
-5. Cihazınızın AR desteğine sahip olduğundan emin olun.
+<h2>📋 6️⃣ Cihazınızın AR Desteğini Kontrol Edin</h2>
+<ul>
+  <li>Android: ARCore destekli olmalı.</li>
+  <li>iOS: ARKit destekli olmalı.</li>
+</ul>
 
-## Oyun Ayarları
+<h2>✅ Kurulum Tamamlandı!</h2>
+<p>Artık oyuna başlayabilir, doğru sayılı balonları patlatarak eğlenebilirsiniz! 🎈🎯💥</p>
 
-Bazı oyun parametrelerini `SpawnScript` ve diğer script'lerdeki değişkenleri düzenleyerek ayarlayabilirsiniz:
+<hr>
 
-- `spawnInterval`: Balonların oluşturulma sıklığı (saniye cinsinden)
-- `spawnWidth`: Balonların yatay düzlemde dağılım genişliği
-- `balloonsPerSet`: Her sette oluşturulacak balon sayısı
-- `moveSpeed`: Balonların yukarı hareket hızı
+<h2>⚙️ Oyun Ayarları</h2>
+<p>Scriptlerde düzenleyebileceğiniz parametreler:</p>
+<ul>
+  <li><code>spawnInterval</code>: Balonların oluşturulma sıklığı (saniye)</li>
+  <li><code>spawnWidth</code>: Balonların yatay dağılım genişliği</li>
+  <li><code>balloonsPerSet</code>: Her sette oluşturulacak balon sayısı</li>
+  <li><code>moveSpeed</code>: Balonların yukarı hareket hızı</li>
+</ul>
 
-## Geliştirme Notları
+<h2>🧠 Geliştirme Notları</h2>
+<ul>
+  <li>AR Foundation kullanıldı.</li>
+  <li>TextMeshPro ile metinler hazırlandı.</li>
+  <li>3D modellerde BoxCollider kullanıldı.</li>
+  <li>Skorlar ve can bilgileri <code>PlayerPrefs</code> ile kaydedilir.</li>
+</ul>
 
-- Oyun AR Foundation kullanılarak geliştirilmiştir.
-- TextMeshPro kullanılarak metin görüntüleme yapılmaktadır.
-- Balonlar 3D modellerdir ve BoxCollider bileşeni ile çarpışma algılaması yapılır.
-- Tüm skor ve can bilgileri PlayerPrefs ile cihaza kaydedilir.
+<h2>🔮 Gelecek Geliştirmeler</h2>
+<ul>
+  <li>Farklı zorluk seviyeleri</li>
+  <li>Çeşitli matematik işlemlerinin seçimi</li>
+  <li>Ses efektleri ve müzik</li>
+  <li>Görsel efekt iyileştirmeleri</li>
+</ul>
 
-## Gelecek Geliştirmeler
+<hr>
 
-- Farklı zorluk seviyeleri
-- Çeşitli matematik işlemlerinin seçilebilmesi
-- Ses efektleri ve müzik
-- Görsel efektlerin iyileştirilmesi
+<div class="footer">
+  <p>Firma: <strong>NovaKids.Tech</strong><br>
+  İletişim: <a href="mailto:NovaKids.Tech@gmail.com">NovaKids.Tech@gmail.com</a></p>
+</div>
 
-
-
----
-
-__Firma:__ NovaKids.Tech  
-__İletişim:__ NovaKids.Tech@gmail.com
+</body>
+</html>
