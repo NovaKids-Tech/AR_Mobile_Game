@@ -80,12 +80,26 @@ public class GameManager : MonoBehaviour
         score = 0;
         lives = 3;
         isGameOver = false;
+        
+        // Önce UI'ı güncelle
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(false);
         }
         UpdateUI();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        // SpawnScript'i bul ve sıfırla
+        SpawnScript spawnScript = FindObjectOfType<SpawnScript>();
+        if (spawnScript != null)
+        {
+            spawnScript.ResetGame();
+        }
+        else
+        {
+            Debug.LogError("RestartGame: SpawnScript bulunamadı!");
+            // Sahneyi yeniden yükle
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void LoadHighScore()

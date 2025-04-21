@@ -248,7 +248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -3, y: 43}
+  m_AnchoredPosition: {x: -6, y: 43}
   m_SizeDelta: {x: 15, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4204865519559199095
@@ -449,8 +449,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 7
   moveSpeed: 0.4
-  isRedBalloon: 0
   answerText: {fileID: 5093265421715066322}
+  isBonusBalloon: 0
 --- !u!65 &-780110464568826023
 BoxCollider:
   m_ObjectHideFlags: 0
