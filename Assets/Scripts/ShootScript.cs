@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShootScript : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ShootScript : MonoBehaviour
     public GameObject smoke;
     public int correctAnswerScore = 10; // Doğru cevap için puan
     public int bonusScore = 10; // Bonus balon için puan
+    public GameObject scoreEffectPrefab; // Puan efekti prefabı
     
     private GameManager gameManager;
     private MathProblemGenerator mathProblemGenerator;
@@ -27,6 +29,26 @@ public class ShootScript : MonoBehaviour
         }
     }
 
+    void CreateScoreEffect(Vector3 position)
+    {
+        if (scoreEffectPrefab != null)
+        {
+            // Balonun pozisyonunda oluştur
+            GameObject scoreEffect = Instantiate(scoreEffectPrefab, position, Quaternion.identity);
+            
+            // Text bileşenini bul ve yazıyı ayarla
+            TextMeshProUGUI textMesh = scoreEffect.GetComponentInChildren<TextMeshProUGUI>();
+            if (textMesh != null)
+            {
+                textMesh.text = "+" + correctAnswerScore.ToString();
+            }
+            else
+            {
+                Debug.LogError("Score effect text bileşeni bulunamadı!");
+            }
+        }
+    }
+
     public void Shoot()
     {
         if (gameManager == null || mathProblemGenerator == null) return;
@@ -43,12 +65,14 @@ public class ShootScript : MonoBehaviour
                     // Bonus balon veya doğru cevap kontrolü
                     if (balloon.isBonusBalloon)
                     {
-                        gameManager.AddScore(bonusScore);
-                        Debug.Log($"Bonus balon! +{bonusScore} puan!");
+                        gameManager.AddScore(correctAnswerScore); // Bonus için de aynı puanı kullan
+                        CreateScoreEffect(hit.point);
+                        Debug.Log($"Bonus balon! +{correctAnswerScore} puan!");
                     }
                     else if (balloon.IsCorrectAnswer())
                     {
                         gameManager.AddScore(correctAnswerScore);
+                        CreateScoreEffect(hit.point);
                         Debug.Log($"Doğru cevap! +{correctAnswerScore} puan!");
                     }
                     else
