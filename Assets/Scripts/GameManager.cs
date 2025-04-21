@@ -97,7 +97,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogError("RestartGame: SpawnScript bulunamadı!");
-            // Sahneyi yeniden yükle
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
@@ -113,9 +112,6 @@ public class GameManager : MonoBehaviour
         {
             scoreText.text = "Puan: " + score.ToString();
         }
-        if (livesText != null)
-        {
-            livesText.text = "Can: " + lives.ToString();
-        }
+        // Lives Text'i artık kullanmıyoruz çünkü balon ikonları var
     }
 } 
