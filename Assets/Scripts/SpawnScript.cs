@@ -17,6 +17,15 @@ public class SpawnScript : MonoBehaviour
 
     void Start()
     {
+        ResetGame();
+    }
+
+    public void ResetGame()
+    {
+        isFirstSet = true;
+        isSetHit = false;
+        timer = spawnInterval;
+        
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager == null)
         {
@@ -68,8 +77,6 @@ public class SpawnScript : MonoBehaviour
             // İlk set için balonlara "BONUS" yazı atayalım
             AssignBonusTextToBalloons();
         }
-        
-        timer = spawnInterval;
     }
 
     void Update()
@@ -180,20 +187,6 @@ public class SpawnScript : MonoBehaviour
     public void OnBalloonHit(bool isCorrect)
     {
         isSetHit = true;
-        
-        if (isFirstSet)
-        {
-            // İlk sette tüm balonlar bonus, can kaybetme ve 10 puan ver
-            gameManager.AddScore(10);
-            Debug.Log("Bonus balon patlatıldı! +10 puan!");
-        }
-        else if (!isCorrect)
-        {
-            // Normal setlerde yanlış cevap can kaybettirir
-            gameManager.LoseLife();
-        }
-        
-        // Balon vurulduğunda yeni soru oluşturma, sadece timer'ı sıfırla
-        timer = spawnInterval;
+        timer = spawnInterval; // Yeni set için süreyi sıfırla
     }
 }

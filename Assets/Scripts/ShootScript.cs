@@ -6,6 +6,9 @@ public class ShootScript : MonoBehaviour
 {
     public GameObject arCamera;
     public GameObject smoke;
+    public int correctAnswerScore = 10; // Doğru cevap için puan
+    public int bonusScore = 10; // Bonus balon için puan
+    
     private GameManager gameManager;
     private MathProblemGenerator mathProblemGenerator;
 
@@ -37,12 +40,24 @@ public class ShootScript : MonoBehaviour
                 
                 if (balloon != null)
                 {
-                    if (balloon.IsCorrectAnswer())
+                    // Bonus balon veya doğru cevap kontrolü
+                    if (balloon.isBonusBalloon)
                     {
-                        gameManager.AddScore(10); // Doğru cevap: +10 puan
+                        gameManager.AddScore(bonusScore);
+                        Debug.Log($"Bonus balon! +{bonusScore} puan!");
+                    }
+                    else if (balloon.IsCorrectAnswer())
+                    {
+                        gameManager.AddScore(correctAnswerScore);
+                        Debug.Log($"Doğru cevap! +{correctAnswerScore} puan!");
+                    }
+                    else
+                    {
+                        gameManager.LoseLife();
+                        Debug.Log("Yanlış cevap! -1 can!");
                     }
                     
-                    balloon.Shot();
+                    balloon.Shot(); // Balonu yok et ve SpawnScript'e haber ver
                 }
 
                 Instantiate(smoke, hit.point, Quaternion.LookRotation(hit.normal));

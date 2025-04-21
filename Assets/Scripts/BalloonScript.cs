@@ -49,16 +49,29 @@ public class BalloonScript : MonoBehaviour
         // Bonus balonlar her zaman doğru sayılır
         if (isBonusBalloon) return true;
 
-        if (answerText == null) return false;
+        if (answerText == null)
+        {
+            Debug.LogError("BalloonScript: answerText null!");
+            return false;
+        }
 
         MathProblemGenerator mathProblemGenerator = FindObjectOfType<MathProblemGenerator>();
-        if (mathProblemGenerator == null) return false;
+        if (mathProblemGenerator == null)
+        {
+            Debug.LogError("BalloonScript: MathProblemGenerator bulunamadı!");
+            return false;
+        }
 
         int balloonAnswer;
         if (int.TryParse(answerText.text, out balloonAnswer))
         {
-            return balloonAnswer == mathProblemGenerator.GetCorrectAnswer();
+            int correctAnswer = mathProblemGenerator.GetCorrectAnswer();
+            bool isCorrect = balloonAnswer == correctAnswer;
+            Debug.Log($"Balon cevabı: {balloonAnswer}, Doğru cevap: {correctAnswer}, Doğru mu: {isCorrect}");
+            return isCorrect;
         }
+        
+        Debug.LogError("BalloonScript: answerText sayıya çevrilemedi!");
         return false;
     }
 }
