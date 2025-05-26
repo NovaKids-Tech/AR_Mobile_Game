@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "623546114551",
+    "project_id": "ar-balloon-856b0",
+    "storage_bucket": "ar-balloon-856b0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623546114551:android:9ebbf9323230d817aa8ef2",
+        "android_client_info": {
+          "package_name": "com.novakidstech.ARR_balloon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZEg5VNJvl4cJxL2HhuaoBwcGsKymSLY8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
