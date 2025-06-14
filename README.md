@@ -77,6 +77,11 @@
 <h1> Kurulum ve Çalıştırma Rehberi</h1>
 <p>Bu rehberde, <strong>AR Mobil Balon Oyunu</strong> projesini nasıl indirip çalıştıracağınızı adım adım ve sade bir şekilde anlatıyoruz.</p>
 
+<h2>🛠️ Gereksinimler</h2>
+<ul>
+  <li><strong>Kullanılan Unity Sürümü:</strong> Unity 2021.3.10f1</li>
+</ul>
+
 <h2>1️⃣ Projeyi Bilgisayarınıza İndirin</h2>
 <p>Terminal veya komut satırını açın ve:</p>
 <pre><code>git clone https://github.com/NovaKids-Tech/AR_Mobile_Game.git</code></pre>
@@ -87,15 +92,25 @@
 <h2>3️⃣ Unity Hub ile Projeyi Açın</h2>
 <p>Unity Hub'ı açın ve <code>Add</code> butonuna tıklayıp proje klasörünü seçin.</p>
 
-<h2>4️⃣ Gerekli AR Paketlerini Yükleyin</h2>
+<h2>4️⃣ Gerekli Unity Paketlerini Yükleyin</h2>
 <ol>
-  <li><code>Window > Package Manager</code> seçeneğini açın.</li>
+  <li><code>Window &gt; Package Manager</code> seçeneğini açın.</li>
   <li><code>Unity Registry</code> kısmını seçin.</li>
-  <li>Şu paketleri yükleyin:
+  <li>Aşağıdaki paketleri ve belirtilen sürümlerini yükleyin:
     <ul>
-      <li>AR Foundation</li>
-      <li>Android: ARCore XR Plugin</li>
-      <li>iOS: ARKit XR Plugin</li>
+      <li>Android Logcat: <strong>1.3.2</strong></li>
+      <li>Apple ARKit XR Plugin: <strong>5.2.0</strong></li>
+      <li>AR Foundation: <strong>5.2.0</strong></li>
+      <li>Google ARCore XR Plugin: <strong>5.2.0</strong></li>
+      <li>JetBrains Rider Editor: <strong>3.0.15</strong></li>
+      <li>Test Framework: <strong>1.1.33</strong></li>
+      <li>TextMeshPro: <strong>3.0.6</strong></li>
+      <li>Timeline: <strong>1.6.4</strong></li>
+      <li>Unity UI: <strong>1.0.0</strong></li>
+      <li>Version Control: <strong>1.17.2</strong></li>
+      <li>Visual Studio Code Editor: <strong>1.2.5</strong></li>
+      <li>Visual Studio Editor: <strong>2.0.16</strong></li>
+      <li>XR Legacy Input Helpers: <strong>2.1.1</strong></li>
     </ul>
   </li>
 </ol>
