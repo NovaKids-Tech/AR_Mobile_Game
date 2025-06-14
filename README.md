@@ -3,7 +3,7 @@
 <h1>🎈 AR Balon Patlatma Oyunu</h1>
 <p>Bu proje, Unity ile geliştirilmiş, AR (Artırılmış Gerçeklik) teknolojisini kullanan eğitici bir matematik oyunudur. Oyuncular, gerçek dünya üzerinde beliren balonları patlatarak matematik becerilerini geliştirebilirler.</p>
 
-<p><a href="https://www.youtube.com/watch?v=JQCE79prn0k" target="_blank">🎬 Oyun Tanıtım Videosu</a></p>
+<p><a href="https://youtu.be/ycxj6gumMrY" target="_blank">🎬 Oyun Tanıtım Videosu(Vize)</a></p>
 <p><a href="https://drive.google.com/file/d/1pAwp147_oUpoS17l3FdGiRdmYSkaE8ub/view?usp=sharing" target="_blank">📥 Uygulama APK Linki</a></p>
 
 <h2>🗂️ Proje Yönetimi</h2>
